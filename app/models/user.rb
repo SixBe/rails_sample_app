@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
 		uniqueness: { case_sensitive: false }
 
 	before_save { self.email.downcase! }
+	before_save { self.name.squish! } # remove all extra white space (leading/trailing/multiple)
 
 	# Validation of password
 	validates :password, presence: true, length: { minimum: 6 }

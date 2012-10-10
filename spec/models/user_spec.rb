@@ -41,6 +41,15 @@ describe User do
 		it { should_not be_valid }
 	end
 
+  describe "when name containes leading/trailing/multiple spaces" do
+    let( :spaced_out_name ) { " " * 3 + "a" * 7 + " " * 5 + "b" * 2 + " " * 3 }
+    it "should be saved without those spaces" do
+        @user.name = spaced_out_name
+        @user.save
+        @user.reload.name.should == spaced_out_name.squish
+      end
+  end
+
 # Email tests
 	describe "when email is not present" do
     	before { @user.email = " " }
