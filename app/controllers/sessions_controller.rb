@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.find_by_email(params[:session][:email].downcase)
+		user = User.find_by_email(params[:email].downcase)
 
-		if user && user.authenticate(params[:session][:password])
+		if user && user.authenticate(params[:password])
 			# Signin succeeded: re-direct to the user's show page
 			flash[:success] = "Welcome"
 			sign_in user
