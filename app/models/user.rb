@@ -26,6 +26,6 @@ class User < ActiveRecord::Base
 	before_save { self.name.squish! } # remove all extra white space (leading/trailing/multiple)
 
 	# Validation of password
-	validates :password, presence: true, length: { minimum: 6 }
+	validates :password, length: { minimum: 6 }
 	validates :password_confirmation, presence: true
 end

@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
-   	@user = User.find(params[:id])
+   	  flash[:success] = "Welcome to the Sample App!"
+      flash[:error] = "Get the hell out of here!"
+     flash[:wtf] = "This is just a message"
+     @user = User.find(params[:id])
   end
 
   def new
