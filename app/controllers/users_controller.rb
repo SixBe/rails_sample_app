@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
   def show
-   	  flash[:success] = "Welcome to the Sample App!"
-      flash[:error] = "Get the hell out of here!"
-     flash[:wtf] = "This is just a message"
      @user = User.find(params[:id])
   end
 
@@ -14,6 +11,7 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	if @user.save	
   		# handle a successfull save
+      sign_in @user
   		flash[:success] = "Welcome to the Sample App!"
   		redirect_to @user
   	else
