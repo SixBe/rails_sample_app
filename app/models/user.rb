@@ -10,6 +10,7 @@
 #
 
 class User < ActiveRecord::Base
+	# List of attributes which are accessible
 	attr_accessible :email, :name, :password, :password_confirmation
 	has_secure_password # single method to ensure proper management of password including authentication
 
